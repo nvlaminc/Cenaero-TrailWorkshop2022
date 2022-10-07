@@ -9,6 +9,7 @@ Noémie Vlaminck
 
 ## External Contributors
 Rebecca Marion
+
 Victor Delvigne
 
 ## General Information 
