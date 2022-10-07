@@ -1,0 +1,7 @@
+darts==0.21.0
+matplotlib==3.3.4
+numpy==1.14.3
+pandas==1.4.3
+pytorch_lightning==1.7.3
+scikit_learn==1.1.2
+torchmetrics==0.9.3
