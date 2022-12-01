@@ -8,15 +8,17 @@ from tslearn.clustering import TimeSeriesKMeans
 if __name__ == "__main__":
     #Read input args
     parser = argparse.ArgumentParser() 
-    parser.add_argument("--data_file", type=str, default="./data.pkl", help="the path to the data") 
+    parser.add_argument("--data_file", type=str, default="../../QuickStart/Data/Electricity/residential_all_hour_with_date_time.pkl", help="the path to the data") 
     parser.add_argument("--results_folder", type=str, default="./results", help="the path to the output folder") 
     args = parser.parse_args()
     os.makedirs(args.results_folder, exist_ok=True)
     #Load data
     file_path= args.data_file
-    df = pd.read_pickle(file_path)
-    val_reshape = np.array(df)
-    #Apply Kmeans with DTW
+    x_date_time = pd.read_pickle(file_path)
+    ids = x_date_time.columns.values
+    df = x_date_time.sort_values(by='date_time')["2009-07-15" : "2010-12-31"]
+    val_reshape = np.array(df).T
+    #Apply Kmeans with DTW for a mean week
     val_reshape = np.reshape(val_reshape[:, :7*24*76], (3639, -1, 7, 24))
     val_reshape = val_reshape.mean(1)
     val_reshape = np.reshape(val_reshape, (3639, 7*24))
