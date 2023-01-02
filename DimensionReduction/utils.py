@@ -131,9 +131,7 @@ def seasons_reshape(x):
     season[:, 1] = 0.5*(x[:, b_id:b_id+l_period] + x[:, b_id+4*l_period:b_id+5*l_period])
     season[:, 2] =  x[:, b_id+l_period:b_id+2*l_period]
     season[:, 3] =  x[:, b_id+2*l_period:b_id+3*l_period]
-    
     season = season[:, :, :7*24*13].reshape((season.shape[0], season.shape[1], -1, 7, 24))
-
     return season.mean(2).reshape(season.shape[0], -1)
 
 def gaussian_smoothing (df, std = 3, n_points = 25):
