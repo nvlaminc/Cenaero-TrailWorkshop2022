@@ -40,9 +40,9 @@ Demonstration of outlier detection using Isolation Forest. Plot of first two pri
 
 # Seasonality_Investigation.ipynb
 
-Visualization of mean evolution (daily, weekly, monthly, seasonally ie 3 months, whole dataset).
+Visualization of mean evolution (weekly, monthly, seasonally ie 3 months, whole dataset).
 
-Investigation on the signal means depending on the basis for the mean (daily, weekly, monthly, etc) to study the general trend in the population.
+Investigation on the signal means depending on the basis for the mean (weekly, monthly, etc) to study the general trend in the population.
 
 # SOM
 
@@ -54,9 +54,11 @@ Code started for attempting Singular Spectral Analysis (a sort of SVD for time s
 
 # Wavelet_Analysis.ipynb
 
-Demonstrates results for clustering after applying wavelet and autocorrelation transforms. Includes the removal of outliers based on Isolation Forest and series maximum / std values.
+Demonstrates results for clustering after applying pca, wavelet and autocorrelation transforms. Includes the removal of outliers based on Isolation Forest and series maximum / std values.
 
 Includes:
+
+Outlier removal
 
 Autocorrelation with 1-month lag + Kmeans and Spectral clustering
 
