@@ -118,7 +118,6 @@ def rmse_var(x, x_hat):
 def mse_cluster(sig, cluster):
     mse = 0
     for i in tqdm(range(len(sig))):
-        
         mse += rmse_var(sig[i], sig[cluster==cluster[i]].mean(0))
     return mse/len(sig)
 
@@ -166,7 +165,7 @@ def gen_train_val_series(c, cluster_list, x_date_time, do_plot=False):
     train_serie = darts.TimeSeries.from_dataframe(df)
     if do_plot :
         train_serie.plot()
-
+    #Compute the centroid of the following week
     conso = x_date_time.sort_values(by='date_time')["2010-07-14" : "2010-07-21"][cluster_list[c]['ids']].values.mean(1)
     df = pd.DataFrame()
     df['date_time'] = pd.date_range(start="2010-07-14", end="2010-07-21 23:00:00", freq="60T", name='date_time')
