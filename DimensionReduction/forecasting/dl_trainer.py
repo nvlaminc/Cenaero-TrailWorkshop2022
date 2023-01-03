@@ -1,3 +1,5 @@
+import sys
+sys.path.append('..')
 from utils import *
 
 ids = np.load('id_kept.npy')

@@ -1,9 +1,9 @@
 # training_baseline.py
 
-Script for the training and validation on the baseline.
+Script for the training and validation of the baseline.
 
-- Generation of the validation and training dart seriess.
-- Hyperparameter definition + model creation
+- Generation of the validation and training dart series.
+- Hyperparameters definition + model creation
 - Model Training and metrics computation.
 
 # training_cluster.py 
@@ -16,4 +16,4 @@ For faster training, id_kept during the investigation to not repeat the training
 
 # dl_trainer.py
 
-Script to generalise the training on every measurement.
+Script to generalize the training on every measurement.
