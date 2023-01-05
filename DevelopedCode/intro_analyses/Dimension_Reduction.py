@@ -14,7 +14,7 @@ if __name__ == "__main__":
 
     ###Initialize variables
     time_basis = 48
-    n_cluster = 14
+    n_cluster = 4
 
     ###Load data
     """
@@ -44,6 +44,7 @@ if __name__ == "__main__":
     plot_cluster(x, kmeans.predict(x), cluster_id=0, period='week', time_basis = 48)
     #visualisation in 2D T-SNE manifold for ease
     tsne = TSNE(n_components=2, n_jobs=-1).fit_transform(x)
+    fig = plt.figure('T-SNE visualisation of KMeans Clustering')
     fig = plt.suptitle('Visualisation of KMeans Clustering on Original Signals')
     plt.scatter(tsne[:, 0], tsne[:, 1], c=kmeans.predict(x), edgecolors = "face")
     plt.show()
@@ -65,7 +66,7 @@ if __name__ == "__main__":
     kmeans_pca = KMeans(n_clusters=n_cluster, random_state=0).fit(x_pca)
     #visualisation of the clustered space in the two first dimensions
     fig = plt.figure('KMeans Clustering on PCA Representation')
-    fig = plt.suptitle('Visualisation of KMeans Clustering on PCA Representation')
+    fig = plt.suptitle('Visualisation of KMeans Clustering on PCA Representation') 
     plt.scatter(x_pca[:, 0], x_pca[:, 1], c=kmeans_pca.predict(x_pca), edgecolors = "face")
     plt.show()
     # Energy Consumption Profile for cluster_id = 0 and periods of 1 day and 1 week
