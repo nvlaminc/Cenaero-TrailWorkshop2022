@@ -85,7 +85,7 @@ def plot_cluster(dataset, cluster, cluster_id=0, period='day', time_basis = 24):
         plt.plot(x.mean(1).mean(0).flatten())
         plt.suptitle(f'Weekly Energy Consumption Profile of the Cluster {cluster_id+1}')    
     ax = plt.gca()
-    ax.set_ylim([0, 4])
+    ax.set_ylim([0, 5])
     plt.grid()
     plt.xlabel('Time')
     plt.ylabel('Electrical Consumption')
@@ -124,14 +124,14 @@ def mse_cluster(sig, cluster):
 def seasons_reshape(x):
     l_period = 24*365//4
     b_id = 1758
-    season = np.zeros((x.shape[0], 4, l_period))
+    season = np.zeros((x.shape[0], 4, l_period)) #3639*4*2190 (four seasons)
     season[:, 0, l_period-b_id:] = 0.5*(x[:, :b_id] + x[:, 8328-b_id:8328])
     season[:, 0, :l_period-b_id] = x[:, 6138:6138+l_period-b_id]
     season[:, 1] = 0.5*(x[:, b_id:b_id+l_period] + x[:, b_id+4*l_period:b_id+5*l_period])
     season[:, 2] =  x[:, b_id+l_period:b_id+2*l_period]
     season[:, 3] =  x[:, b_id+2*l_period:b_id+3*l_period]
-    season = season[:, :, :7*24*13].reshape((season.shape[0], season.shape[1], -1, 7, 24))
-    return season.mean(2).reshape(season.shape[0], -1)
+    season = season[:, :, :7*24*13].reshape((season.shape[0], season.shape[1], -1, 7, 24)) #3639*4*13*7*24
+    return season.mean(2).reshape(season.shape[0], -1) #mean on 13 weeks == season ==> 3639*4*7*24 == 3639*672 (array of mean weeks for the four seasons)
 
 def gaussian_smoothing (df, std = 3, n_points = 25):
     df_smoothed = df.copy()
